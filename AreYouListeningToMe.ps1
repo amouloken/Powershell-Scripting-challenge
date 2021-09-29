@@ -1,0 +1,1 @@
+$env:COMPUTERNAME; get-nettcpconnection | select local,remote,state,@{Name="Process";Expression={(Get-Process -Id $_.OwningProcess).ProcessName}}|ft; Get-NetTcpConnection | Select-Object @{name='ConnectionAge';expression={$(Get-Date) - $_.CreationTime}}
